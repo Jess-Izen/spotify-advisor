@@ -80,6 +80,10 @@ class View {
                 break;
             case "InitialAuth":
                 System.out.println("Please input 'auth' to authorize application");
+                break;
+            case "NoModel":
+                System.out.println("You must load another command before using prev/next");
+                break;
         }
     }
 

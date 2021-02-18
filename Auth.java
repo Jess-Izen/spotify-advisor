@@ -73,11 +73,13 @@ public class Auth {
         try {
             Config.ACCESS_TOKEN = responseJson.get("access_token").getAsString();
             System.out.println("---SUCCESS---");
-            Controller.takeInput(null);
         } catch (Exception e) {
             System.out.println("Failed, please re-authorize.");
             Controller.initialInput();
+            return;
         }
+
+        Controller.takeInput(null);
 
     }
 }

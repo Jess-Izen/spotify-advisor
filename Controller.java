@@ -60,23 +60,32 @@ class Controller {
                 getPlaylists(category);
                 break;
             case "prev":
-                if (prevModel.currentPage == 1) {
-                    View.showMessage("Page");
-                    takeInput(prevModel);
-                }
-                else {
-                    prevModel.currentPage -= 1;
-                    viewModel(prevModel);
+                if (prevModel == null){
+                    View.showMessage("NoModel");
+                    takeInput(null);
+                } else {
+                        if (prevModel.currentPage == 1) {
+                            View.showMessage("Page");
+                            takeInput(prevModel);
+                        } else {
+                            prevModel.currentPage -= 1;
+                            viewModel(prevModel);
+                        }
                 }
                 break;
+
             case "next":
-                if (prevModel.currentPage == prevModel.totalPages) {
-                    View.showMessage("Page");
-                    takeInput(prevModel);
-                }
-                else {
-                    prevModel.currentPage += 1;
-                    viewModel(prevModel);
+                if (prevModel == null){
+                    View.showMessage("NoModel");
+                    takeInput(null);
+                } else {
+                    if (prevModel.currentPage == prevModel.totalPages) {
+                        View.showMessage("Page");
+                        takeInput(prevModel);
+                    } else {
+                        prevModel.currentPage += 1;
+                        viewModel(prevModel);
+                    }
                 }
                 break;
 
@@ -228,10 +237,6 @@ class Controller {
         }
         return categoryId;
     }
-
-
-
-
 
 
     static JsonObject sendApiRequest(String path) {
